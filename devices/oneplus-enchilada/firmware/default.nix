@@ -17,6 +17,13 @@ in runCommand "oneplus-sdm845-firmware" {
 } ''
   mkdir -p $out/lib/firmware
   cp -r $baseFw/lib/firmware/* $out/lib/firmware/
+
+  mkdir -p $out/lib/qcom
+  cp -r $baseFw/{usr,var}/lib/qcom/* $out/lib/qcom
+
+  mkdir -p $out/etc/qcom/sensors.d/
+  cp -r $baseFw/etc/qcom/sensors.d/* $out/etc/qcom/sensors.d/
+
   chmod +w -R $out
   rm -rf $out/lib/firmware/postmarketos
   cp -r $baseFw/lib/firmware/postmarketos/* $out/lib/firmware

@@ -33,6 +33,7 @@
       #rm -v $out/lib/firmware/qcom/sdm845/*/modem.mbn
 
       # Copy extra a630 firmware from linux-firmware
+      mkdir -p $out/lib/firmware/qcom/sdm845/oneplus6
       cp -vf ${pkgs.linux-firmware}/lib/firmware/qcom/{a630_sqe.fw,a630_gmu.bin} $out/lib/firmware/qcom
       # some device-specific crap.
       # TODO: check if it's used (somehow :D)

@@ -382,13 +382,17 @@ in
       MTD_PSTORE = no;
       # Devices, users or debug config could enable this if needed
       PSTORE_BLK = no;
-      PSTORE_DEFLATE_COMPRESS = no;
-      PSTORE_LZO_COMPRESS = no;
-      PSTORE_LZ4_COMPRESS = no;
-      PSTORE_LZ4HC_COMPRESS = no;
-      PSTORE_842_COMPRESS = no;
-      PSTORE_ZSTD_COMPRESS = whenAtLeast "4.19" yes;
-      PSTORE_COMPRESS_DEFAULT = freeform ''"zstd"'';
+      # CRAPFIX: i'm too lazy to find where the version comes from
+      # https://github.com/torvalds/linux/commit/438b805003a07606f9a9f222a7ddb7dcdb87aeaa
+      # thx to @samueldr
+      PSTORE_COMPRESS = yes;
+      #PSTORE_DEFLATE_COMPRESS = no;
+      #PSTORE_LZO_COMPRESS = no;
+      #PSTORE_LZ4_COMPRESS = no;
+      #PSTORE_LZ4HC_COMPRESS = no;
+      #PSTORE_842_COMPRESS = no;
+      #PSTORE_ZSTD_COMPRESS = whenAtLeast "4.19" yes;
+      #PSTORE_COMPRESS_DEFAULT = freeform ''"zstd"'';
     })
 
     (helpers: with helpers; mkDefaultIze {
