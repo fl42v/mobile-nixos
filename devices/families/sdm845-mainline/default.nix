@@ -23,13 +23,20 @@
   # This is a workaround for non-modular kernels wanting to load the adsp firmware during stage-1.
   mobile.boot.stage-1.firmware = [
     (pkgs.runCommand "initrd-firmware" {} ''
-      cp -vrf ${config.mobile.device.firmware} $out
-      chmod -R +w $out
-      # Big file, fills and breaks stage-1
-      rm -v $out/lib/firmware/qcom/sdm845/*/modem.mbn
+      # for op6 pmos folks only copy the gpu-related stuff
+      # https://gitlab.com/dylanvanassche/pmaports/-/blob/qcom-sdm845-sensors/device/community/firmware-oneplus-sdm845/APKBUILD
+      # https://gitlab.com/dylanvanassche/pmaports/-/blob/qcom-sdm845-sensors/device/community/firmware-oneplus-sdm845/30-gpu-firmware.files
+      # since i'm trying to make exactly op6 a bit more usable, i'll comment unnecessary stuff out for now (and make an overlay/override later)
+      #cp -vrf ${config.mobile.device.firmware} $out
+      #chmod -R +w $out
+      ## Big file, fills and breaks stage-1
+      #rm -v $out/lib/firmware/qcom/sdm845/*/modem.mbn
 
       # Copy extra a630 firmware from linux-firmware
       cp -vf ${pkgs.linux-firmware}/lib/firmware/qcom/{a630_sqe.fw,a630_gmu.bin} $out/lib/firmware/qcom
+      # some device-specific crap.
+      # TODO: check if it's used (somehow :D)
+      cp -vrf ${config.mobile.device.firmware}/lib/firmware/qcom/sdm845/oneplus6/a630_zap.mbn $out/lib/firmware/qcom/sdm845/oneplus6/a630_zap.mbn
     '')
   ];
 
@@ -43,7 +50,10 @@
       offset_base = "0x00000000";
       offset_kernel = "0x00008000";
       offset_ramdisk = "0x01000000";
-      offset_second = "0x00000000";
+      # https://gitlab.com/dylanvanassche/pmaports/-/blob/qcom-sdm845-sensors/device/community/device-oneplus-enchilada/deviceinfo#L28
+      # the following github issue (which # i kinda like) says it's not used, but still
+      # https://github.com/NixOS/mobile-nixos/issues/666
+      offset_second = "0x00f00000";
       offset_tags = "0x00000100";
       pagesize = "4096";
     };
@@ -52,6 +62,8 @@
     ];
   };
 
+  # TODO: check if role switching was mainlined (or at least downstreamed).
+  # I remember it being done for 845-s
   mobile.usb.mode = "gadgetfs";
   # The identifiers used here serve as a compatible well-known identifier.
   mobile.usb.idVendor = lib.mkDefault "18D1"; # Google
