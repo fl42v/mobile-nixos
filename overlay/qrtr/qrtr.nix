@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation {
   pname = "qrtr";
-  version = "unstable-2020-12-07";
+  version = "unstable-2023-01-18";
 
   src = fetchFromGitHub {
     owner = "andersson";
     repo = "qrtr";
-    rev = "9dc7a88548c27983e06465d3fbba2ba27d4bc050";
-    hash = "sha256-eJyErfLpIv4ndX2MPtjLTOQXrcWugQo/03Kz4S8S0xw=";
+    rev = "d0d471c96e7d112fac6f48bd11f9e8ce209c04d2";
+    hash = "sha256-KF0gCBRw3BDJdK1s+dYhHkokVTHwRFO58ho0IwHPehc=";
   };
 
   installFlags = [ "prefix=$(out)" ];

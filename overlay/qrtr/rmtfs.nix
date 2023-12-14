@@ -2,15 +2,15 @@
 
 stdenv.mkDerivation {
   pname = "rmtfs";
-  version = "unstable-2022-07-18";
+  version = "unstable-2022-01-18";
 
   buildInputs = [ udev qrtr qmic ];
 
   src = fetchFromGitHub {
     owner = "andersson";
     repo = "rmtfs";
-    rev = "695d0668ffa6e2a4bf6e676f3c58a444a5d67690";
-    hash = "sha256-00KOjdkwcAER261lleSl7OVDEAEbDyW9MWxDd0GI8KA=";
+    rev = "7a5ae7e0a57be3e09e0256b51b9075ee6b860322";
+    hash = "sha256-iyTIPuzZofs2n0aoiA/06edDXWoZE3/NY1vsy6KuUiw=";
   };
 
   installFlags = [ "prefix=$(out)" ];
