@@ -27,10 +27,10 @@
       # https://gitlab.com/dylanvanassche/pmaports/-/blob/qcom-sdm845-sensors/device/community/firmware-oneplus-sdm845/APKBUILD
       # https://gitlab.com/dylanvanassche/pmaports/-/blob/qcom-sdm845-sensors/device/community/firmware-oneplus-sdm845/30-gpu-firmware.files
       # since i'm trying to make exactly op6 a bit more usable, i'll comment unnecessary stuff out for now (and make an overlay/override later)
-      cp -vrf ${config.mobile.device.firmware} $out
-      chmod -R +w $out
-      # Big file, fills and breaks stage-1
-      rm -v $out/lib/firmware/qcom/sdm845/*/modem.mbn
+      #cp -vrf ${config.mobile.device.firmware} $out
+      #chmod -R +w $out
+      ## Big file, fills and breaks stage-1
+      #rm -v $out/lib/firmware/qcom/sdm845/*/modem.mbn
 
       # Copy extra a630 firmware from linux-firmware
       mkdir -p $out/lib/firmware/qcom/sdm845/oneplus6
