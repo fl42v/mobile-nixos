@@ -12,10 +12,10 @@
   ./disk-image.nix
   ./documentation.nix
   ./eg25-manager.nix
-  ./hardware-eink.nix
   ./generated-disk-images.nix
   ./generated-filesystems.nix
   ./hardware-allwinner.nix
+  ./hardware-eink.nix
   ./hardware-exynos.nix
   ./hardware-generic.nix
   ./hardware-mediatek.nix
@@ -27,8 +27,8 @@
   ./hardware.nix
   ./initrd-base.nix
   ./initrd-boot-gui.nix
-  ./initrd-fbterm.nix
   ./initrd-fail.nix
+  ./initrd-fbterm.nix
   ./initrd-firmware.nix
   ./initrd-kernel.nix
   ./initrd-logs.nix
@@ -42,8 +42,8 @@
   ./kernel-config.nix
   ./lib.nix
   ./luks.nix
-  ./mobile.nix
   ./mobile-device.nix
+  ./mobile.nix
   ./nixpkgs.nix
   ./outputs.nix
   ./plymouth.nix
