@@ -77,6 +77,7 @@
   };
 
   mobile.quirks.qualcomm.sdm845-modem.enable = true;
+  mobile.quirks.qualcomm.sdm845-sensors.enable = true;
 
   services.udev.extraRules = ''
     SUBSYSTEM=="input", KERNEL=="event*", ENV{ID_INPUT}=="1", SUBSYSTEMS=="input", ATTRS{name}=="pmi8998_haptics", TAG+="uaccess", ENV{FEEDBACKD_TYPE}="vibra"
